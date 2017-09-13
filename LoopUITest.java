@@ -161,18 +161,18 @@ public class LoopUITest {
         }
 
         public void openCamera(){
-            Logger("打开 " + "照相机");
+            Logger("launch " + "camera");
             Context context = InstrumentationRegistry.getInstrumentation().getContext();
-            Intent intent = new Intent(); //调用照相机
+            Intent intent = new Intent(); 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setAction("android.media.action.STILL_IMAGE_CAMERA");//
             context.startActivity(intent);
         }
 
         public void openAlbum(){
-            Logger("打开 " + "相册");
+            Logger("open " + "gallery");
             Context context = InstrumentationRegistry.getInstrumentation().getContext();
-            Intent intent = new Intent(Intent.ACTION_PICK, null); //调用相册
+            Intent intent = new Intent(Intent.ACTION_PICK, null); 
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);//
             context.startActivity(intent);
@@ -247,7 +247,7 @@ public class LoopUITest {
                 }
 
                 SystemClock.sleep(100);
-                //多加两次，用于向上拉动刷新
+               
                 for (int i = 0; i < 30; i++) {
                     mDevice.swipe(268, 500, 268, 1200, 100);
                     SystemClock.sleep(100);
@@ -288,7 +288,7 @@ public class LoopUITest {
                 UiObject2 u3 = findObject(By.res("com.twitter.android:id/gallery"));
                 u3.click();
                 mDevice.waitForWindowUpdate("",1000);
-                //打开照相机
+                //launch camera
                 UiObject2 u4 = findObject(By.res("com.twitter.android:id/image"));
                 u4.click();
                 mDevice.waitForWindowUpdate("",3000);
@@ -298,7 +298,7 @@ public class LoopUITest {
 
                 mDevice.waitForWindowUpdate("",1500);
                 UiObject2 u5 = findObject(By.res("com.twitter.android:id/speed_bump_use"));
-                u5.click();//确认
+                u5.click();
                 mDevice.waitForWindowUpdate("",500);
                 UiObject2 u6 = findObject(By.res("com.twitter.android:id/composer_post"));
                 u6.click();
@@ -368,7 +368,7 @@ public class LoopUITest {
 
                 SystemClock.sleep(3000);
 
-                //删除记录
+                //delete records
 
                 List<UiObject2> messeges = mDevice.findObjects(By.res("com.facebook.orca:id/messages_list"));
                 System.out.println("-------->>>" + messeges.size());
@@ -410,7 +410,7 @@ public class LoopUITest {
 
                 UiObject2 u1 = findObject(By.res("com.google.android.gm:id/compose_button"));
                 u1.click();
-                mDevice.waitForWindowUpdate("",1000);//写邮件
+                mDevice.waitForWindowUpdate("",1000);//write emails
 
                 UiObject2 u2 = findObject(By.res("com.google.android.gm:id/to"));
                 u2.clear();
